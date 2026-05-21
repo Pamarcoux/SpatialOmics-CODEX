@@ -1,0 +1,156 @@
+---
+title: "CODEX_Nathalie_test_1_analysis"
+author: "Paul Marcoux"
+date: today
+date-format: "DD MM YYYY"
+format: 
+  html:
+    page-layout: full
+    toc: true
+    toc-depth: 3
+    toc-location: left
+    code-fold: true
+    code-summary: "Show code"
+    code-tools: true
+    theme: cosmo
+    embed-resources: true
+    number-sections: true
+execute:
+  warning: false
+  message: false
+  echo: false
+  column: page
+jupyter: sopa
+---
+
+# Analysis of the CODEX data from Nathalie Test_1
+
+## Configuration and package loading
+
+```{python}
+```
+
+```{r Env}
+library(reticulate)
+use_condaenv("sopa", required = TRUE)
+```
+Import Package
+```{python Import}
+#| echo: true
+# import the python packages
+import scanpy as sc
+import spatialdata as sd
+import pandas as pd
+import numpy as np
+import h5py
+import anndata as ad
+import spatialdata_io as sio
+import spatialdata_plot
+import matplotlib.pyplot as plt
+import warnings
+import os
+import squidpy as sq
+
+warnings.filterwarnings("ignore")
+```
+
+Read Data
+
+```{python}
+#| echo: true
+adata_all = sc.read_h5ad("/home/paul.marcoux/Postdoc/Python/sopa/workflow/data/Nathalie_test/data/Test_2/processed/adata_merged_Test2_leiden_0_5.h5ad")
+```
+
+## Clustering and Umap visualization
+
+### Umap of unsupervised leiden clustering with resolution 0.5
+
+```{python}
+# Plot Umap
+sc.pl.umap(adata_all, color = 'leiden')
+```
+### Expression of markers in each clusters
+```{python}
+#| include: false
+marker_list_heatmap_new = [
+    # T cells
+    'CD3e', 'CD4', 'CD8', 'CD45RO', 'TCF-1', 'CD45',
+
+    # Activation / Exhaustion
+    'LAG3', 'TOX', 'CD39',
+
+    # Treg
+    'FOXP3', 'CD38',
+
+    # Tfh
+    'PD-1', 'ICOS',
+
+    # NK
+    'CD56', 'CD57', 'Granzyme B',
+
+    # B cells
+    'CD20', 'CD79a', 'Bcl-2', 'CD21',
+    'Ki67',
+
+    # Myeloid / Macrophages / DC
+    'CD11b', 'CD11c', 'CD68', 'CD163',
+    'CD14', 'CD66', 'MPO',          # Neutrophils/Monocytes
+    'CD206', 'CD209',               # DC / M2 macrophages
+    'IDO1', 'iNOS',                 # Macrophage functional markers
+
+    # Immune checkpoints / Immunomodulation
+    'PD-L1', 'VISTA', 'HLA-DR', 'HLA-A',
+
+    # Stromal / Endothelial
+    'CD31', 'CD34', 'Collagen IV', 'Podoplanin',
+    'SMA', 'Vimentin', 'Caveolin',  # Fibroblast / stromal
+
+    # Epithelial / Tumor
+    'Pan-Cytokeratin', 'EpCAM',
+    'Keratin 14', 'Keratin 5', 
+    # 'Keratin 8/18',  # Epithelial subtypes
+    'E-cadherin', 'b-Catenin1',                 # Epithelial / EMT
+    'TP63', 'SOX2',                             # Epithelial TF
+    'GP100', 'ER',                              # Tumor specific (melanoma / breast)
+
+    # Proliferation / Cell cycle
+    'PCNA', 'Ki67', 'Histone H3 (p Ser28)',
+
+    # Other / Unclassified
+    'CD44',     # Activation / stemness
+    'CD107a',   # Degranulation (NK/CTL)
+    'IFNG',     # Cytokine
+    'Beta-actin',  # Housekeeping
+
+    # Nuclear / Structural (typically excluded from biological analysis)
+    # 'DAPI',
+]
+```
+```{python}
+sc.pl.matrixplot(
+    adata_all,
+    groupby="leiden",
+    var_names=marker_list_heatmap_new,
+    cmap="RdYlBu_r",
+    swap_axes=False,
+    use_raw=False,       # or True if you want raw counts
+    standard_scale="var", # optional: scale across genes
+    colorbar_title="",   # Remove colorbar title
+    show=True,          # Don't show immediately
+)
+```
+
+## Leiden Clustering projection on slide ROI
+
+```{python}
+for sample_name in adata_all.obs["sample"].unique():
+    subset = adata_all[adata_all.obs["sample"] == sample_name]
+    sc.pl.embedding(
+        subset,
+        basis="spatial",
+        color="leiden",
+        title=sample_name,
+        show=False,
+        size=1.5,
+    )
+```

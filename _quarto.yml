@@ -1,0 +1,17 @@
+project:
+  type: book
+
+execute:
+  freeze: auto
+
+book:
+  title: "Test CODEX Analysis SpatialOmics"
+  author: "P MARCOUX"
+  chapters:
+    - index.qmd
+    - CODEX_Nathalie_test_1_analysis.qmd
+    - CODEX_Nathalie_test_2_analysis.qmd
+
+format:
+  html:
+    theme: cosmo
