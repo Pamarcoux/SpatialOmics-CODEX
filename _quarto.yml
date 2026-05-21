@@ -5,8 +5,8 @@ execute:
   freeze: auto
 
 book:
-  title: "Test CODEX Analysis SpatialOmics"
-  author: "P MARCOUX"
+  title: "SpatialOmics CODEX analysis"
+  author: "Paul Marcoux"
   chapters:
     - index.qmd
     - CODEX_Nathalie_test_1_analysis.qmd

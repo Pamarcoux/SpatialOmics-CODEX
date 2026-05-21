@@ -1,7 +1,6 @@
 ---
-title: "index"
+title: "SpatialOmics CODEX analysis"
 format: html
 ---
 
-Test Codex analyse
----
+## Reporting for SpatialOmics CODEX analysis with Nathalie Van Acker

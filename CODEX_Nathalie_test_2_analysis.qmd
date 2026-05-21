@@ -1,5 +1,5 @@
 ---
-title: "CODEX_Nathalie_test_1_analysis"
+title: "Test 2 - Nathalie May 26"
 author: "Paul Marcoux"
 date: today
 date-format: "DD MM YYYY"
@@ -23,7 +23,7 @@ execute:
 jupyter: sopa
 ---
 
-# Analysis of the CODEX data from Nathalie Test_1
+# Analysis of the CODEX data from Nathalie Test_2
 
 ## Configuration and package loading
 
