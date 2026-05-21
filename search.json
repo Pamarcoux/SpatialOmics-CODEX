@@ -2,9 +2,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Test CODEX Analysis SpatialOmics",
+    "title": "SpatialOmics CODEX analysis",
     "section": "",
-    "text": "Reporting for SpatialOmics CODEX analysis with Nathalie Van Acker",
+    "text": "0.1 Reporting for SpatialOmics CODEX analysis with Nathalie Van Acker",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>SpatialOmics CODEX analysis</span>"
     ]
@@ -12,81 +12,81 @@
   {
     "objectID": "CODEX_Nathalie_test_1_analysis.html",
     "href": "CODEX_Nathalie_test_1_analysis.html",
-    "title": "2  CODEX_Nathalie_test_1_analysis",
+    "title": "2  Test 1 - Nathalie Feb 26",
     "section": "",
     "text": "3 Analysis of the CODEX data from Nathalie Test_1",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>CODEX_Nathalie_test_1_analysis</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Test 1 - Nathalie Feb 26</span>"
     ]
   },
   {
     "objectID": "CODEX_Nathalie_test_1_analysis.html#configuration-and-package-loading",
     "href": "CODEX_Nathalie_test_1_analysis.html#configuration-and-package-loading",
-    "title": "2  CODEX_Nathalie_test_1_analysis",
+    "title": "2  Test 1 - Nathalie Feb 26",
     "section": "3.1 Configuration and package loading",
     "text": "3.1 Configuration and package loading\nlibrary(reticulate)\nuse_condaenv(\"sopa\", required = TRUE)\nImport Package\n\n\nShow code\n# import the python packages\nimport scanpy as sc\nimport spatialdata as sd\nimport pandas as pd\nimport numpy as np\nimport h5py\nimport anndata as ad\nimport spatialdata_io as sio\nimport spatialdata_plot\nimport matplotlib.pyplot as plt\nimport warnings\nimport os\nimport squidpy as sq\n\nwarnings.filterwarnings(\"ignore\")\n\n\nRead Data\n\n\nShow code\nadata_all = sc.read_h5ad(\"/home/paul.marcoux/Postdoc/Python/sopa/workflow/data/Nathalie_test/processed/adata_merged_leiden_0_5.h5ad\")",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>CODEX_Nathalie_test_1_analysis</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Test 1 - Nathalie Feb 26</span>"
     ]
   },
   {
     "objectID": "CODEX_Nathalie_test_1_analysis.html#clustering-and-umap-visualization",
     "href": "CODEX_Nathalie_test_1_analysis.html#clustering-and-umap-visualization",
-    "title": "2  CODEX_Nathalie_test_1_analysis",
+    "title": "2  Test 1 - Nathalie Feb 26",
     "section": "3.2 Clustering and Umap visualization",
     "text": "3.2 Clustering and Umap visualization\n\n3.2.1 Umap of unsupervised leiden clustering with resolution 0.5\n\n\n\n\n\n\n\n\n\n\n\n3.2.2 Expression of markers in each clusters",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>CODEX_Nathalie_test_1_analysis</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Test 1 - Nathalie Feb 26</span>"
     ]
   },
   {
     "objectID": "CODEX_Nathalie_test_1_analysis.html#leiden-clustering-projection-on-slide-roi",
     "href": "CODEX_Nathalie_test_1_analysis.html#leiden-clustering-projection-on-slide-roi",
-    "title": "2  CODEX_Nathalie_test_1_analysis",
+    "title": "2  Test 1 - Nathalie Feb 26",
     "section": "3.3 Leiden Clustering projection on slide ROI",
     "text": "3.3 Leiden Clustering projection on slide ROI",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>CODEX_Nathalie_test_1_analysis</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Test 1 - Nathalie Feb 26</span>"
     ]
   },
   {
     "objectID": "CODEX_Nathalie_test_2_analysis.html",
     "href": "CODEX_Nathalie_test_2_analysis.html",
-    "title": "3  CODEX_Nathalie_test_1_analysis",
+    "title": "3  Test 2 - Nathalie May 26",
     "section": "",
-    "text": "4 Analysis of the CODEX data from Nathalie Test_1",
+    "text": "4 Analysis of the CODEX data from Nathalie Test_2",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>CODEX_Nathalie_test_1_analysis</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Test 2 - Nathalie May 26</span>"
     ]
   },
   {
     "objectID": "CODEX_Nathalie_test_2_analysis.html#configuration-and-package-loading",
     "href": "CODEX_Nathalie_test_2_analysis.html#configuration-and-package-loading",
-    "title": "3  CODEX_Nathalie_test_1_analysis",
+    "title": "3  Test 2 - Nathalie May 26",
     "section": "4.1 Configuration and package loading",
     "text": "4.1 Configuration and package loading\nlibrary(reticulate)\nuse_condaenv(\"sopa\", required = TRUE)\nImport Package\n\n\nShow code\n# import the python packages\nimport scanpy as sc\nimport spatialdata as sd\nimport pandas as pd\nimport numpy as np\nimport h5py\nimport anndata as ad\nimport spatialdata_io as sio\nimport spatialdata_plot\nimport matplotlib.pyplot as plt\nimport warnings\nimport os\nimport squidpy as sq\n\nwarnings.filterwarnings(\"ignore\")\n\n\nRead Data\n\n\nShow code\nadata_all = sc.read_h5ad(\"/home/paul.marcoux/Postdoc/Python/sopa/workflow/data/Nathalie_test/data/Test_2/processed/adata_merged_Test2_leiden_0_5.h5ad\")",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>CODEX_Nathalie_test_1_analysis</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Test 2 - Nathalie May 26</span>"
     ]
   },
   {
     "objectID": "CODEX_Nathalie_test_2_analysis.html#clustering-and-umap-visualization",
     "href": "CODEX_Nathalie_test_2_analysis.html#clustering-and-umap-visualization",
-    "title": "3  CODEX_Nathalie_test_1_analysis",
+    "title": "3  Test 2 - Nathalie May 26",
     "section": "4.2 Clustering and Umap visualization",
     "text": "4.2 Clustering and Umap visualization\n\n4.2.1 Umap of unsupervised leiden clustering with resolution 0.5\n\n\n\n\n\n\n\n\n\n\n\n4.2.2 Expression of markers in each clusters",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>CODEX_Nathalie_test_1_analysis</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Test 2 - Nathalie May 26</span>"
     ]
   },
   {
     "objectID": "CODEX_Nathalie_test_2_analysis.html#leiden-clustering-projection-on-slide-roi",
     "href": "CODEX_Nathalie_test_2_analysis.html#leiden-clustering-projection-on-slide-roi",
-    "title": "3  CODEX_Nathalie_test_1_analysis",
+    "title": "3  Test 2 - Nathalie May 26",
     "section": "4.3 Leiden Clustering projection on slide ROI",
     "text": "4.3 Leiden Clustering projection on slide ROI",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>CODEX_Nathalie_test_1_analysis</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Test 2 - Nathalie May 26</span>"
     ]
   }
 ]
