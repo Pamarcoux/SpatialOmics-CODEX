@@ -28,6 +28,7 @@ jupyter: sopa
 ## Configuration and package loading
 
 ```{python}
+
 ```
 
 ```{r Env}
@@ -52,6 +53,35 @@ import os
 import squidpy as sq
 
 warnings.filterwarnings("ignore")
+```
+
+```{python Functions}
+import numpy as np
+
+def plot_spatial_auto_size(adata, sample_name, dpi=100, scale=0.0005):
+    subset = adata[adata.obs["sample"] == sample_name]
+    
+    # Récupère les coordonnées spatiales
+    coords = subset.obsm["spatial"]
+    x_range = coords[:, 0].max() - coords[:, 0].min()
+    y_range = coords[:, 1].max() - coords[:, 1].min()
+    
+    # Calcule la taille en inches proportionnelle
+    fig_w = x_range * scale
+    fig_h = y_range * scale
+    
+    fig, ax = plt.subplots(figsize=(fig_w, fig_h), dpi=dpi)
+    
+    sc.pl.embedding(
+        subset,
+        basis="spatial",
+        color="leiden",
+        title=sample_name,
+        show=False,
+        size=1.5,
+        ax=ax,
+    )
+    plt.tight_layout()
 ```
 
 Read Data
@@ -141,16 +171,20 @@ sc.pl.matrixplot(
 ```
 
 ## Leiden Clustering projection on slide ROI
+```{python}
+plot_spatial_auto_size(adata_all,"OI60-FFPE-Eq09-21T026643-1-050526_1",scale = 0.0005)
+```
 
 ```{python}
-for sample_name in adata_all.obs["sample"].unique():
-    subset = adata_all[adata_all.obs["sample"] == sample_name]
-    sc.pl.embedding(
-        subset,
-        basis="spatial",
-        color="leiden",
-        title=sample_name,
-        show=False,
-        size=1.5,
-    )
+plot_spatial_auto_size(adata_all, "OI60-FFPE-Eq09-21T026643-1-050526_3", scale = 0.0007)
 ```
+```{python}
+plot_spatial_auto_size(adata_all, "OI60-FFPE-Eq09-21T026643-1-050526_2",scale = 0.0005)
+```
+
+```{python}
+plot_spatial_auto_size(adata_all, "IO60-FFPE-Eq09-TemoinAA-070520269")
+```
+
+
+
