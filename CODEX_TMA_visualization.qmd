@@ -1,0 +1,289 @@
+---
+title: "TMA CODEX - Visualization"
+author: "Paul Marcoux"
+date: today
+date-format: "DD MM YYYY"
+format: 
+  html:
+    page-layout: full
+    toc: true
+    toc-depth: 3
+    toc-location: left
+    code-fold: true
+    code-summary: "Show code"
+    code-tools: true
+    theme: cosmo
+    embed-resources: true
+    number-sections: true
+execute:
+  warning: false
+  message: false
+  echo: false
+  column: page
+jupyter: sopa
+---
+
+# TMA CODEX Visualization
+
+## Configuration and package loading
+
+```{python}
+import scanpy as sc
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import warnings
+
+warnings.filterwarnings("ignore")
+sc.settings.verbosity = 0
+```
+
+```{python}
+def plot_spatial_grid(adata, rows=10, cols=4, dpi=100, size=0.5):
+    rows_labels = [chr(ord("A") + r) for r in range(rows)]
+    cols_labels = [str(c) for c in range(1, cols + 1)]
+    n_clusters = int(adata.obs["leiden"].nunique())
+    palette = plt.rcParams["axes.prop_cycle"].by_key()["color"]
+    cluster_colors = {str(i): palette[i % len(palette)] for i in range(n_clusters)}
+    all_coords = adata.obsm.get("spatial", adata.obsm["spatial_um"])
+    x_min, x_max = all_coords[:, 0].min(), all_coords[:, 0].max()
+    y_min, y_max = all_coords[:, 1].min(), all_coords[:, 1].max()
+    x_range = x_max - x_min
+    y_range = y_max - y_min
+
+    fig_w = cols * 3
+    fig_h = rows * 3
+    fig, axes = plt.subplots(rows, cols, figsize=(fig_w, fig_h), dpi=dpi)
+    fig.suptitle("Spatial projection per TMA core", fontsize=16, y=0.98)
+
+    for row in range(rows):
+        for col in range(cols):
+            ax = axes[row, col]
+            core = f"{rows_labels[row]}-{cols_labels[col]}"
+            subset = adata[adata.obs["tma_label"] == core]
+            if subset.n_obs == 0:
+                ax.text(0.5, 0.5, f"{core}\n(empty)", ha="center", va="center", fontsize=8, color="gray")
+                ax.set_xlim(0, 1)
+                ax.set_ylim(0, 1)
+                ax.set_xticks([])
+                ax.set_yticks([])
+                continue
+            coords = subset.obsm.get("spatial", subset.obsm["spatial_um"])
+            coords_c = coords - coords.mean(axis=0)
+            leiden_vals = subset.obs["leiden"].values
+            for cluster in subset.obs["leiden"].unique():
+                mask = leiden_vals == cluster
+                ax.scatter(
+                    coords_c[mask, 0], coords_c[mask, 1],
+                    c=[cluster_colors[cluster]], s=size,
+                    edgecolors="none", alpha=0.7, label=cluster,
+                )
+            ax.set_title(core, fontsize=9)
+            ax.set_aspect("equal")
+            ax.set_xticks([])
+            ax.set_yticks([])
+    plt.tight_layout(rect=[0, 0, 1, 0.96])
+    plt.show()
+```
+
+```{python}
+marker_list_heatmap = [
+    "CD3e", "CD4", "CD8", "CD45RO", "TCF-1", "CD45",
+    "LAG3", "TOX", "CD39", "FOXP3", "CD38",
+    "PD-1", "ICOS",
+    "CD56", "CD57", "Granzyme B",
+    "CD20", "CD79a", "Bcl-2", "CD21", "Ki67",
+    "CD11b", "CD11c", "CD68", "CD163", "CD14", "CD66", "MPO",
+    "CD206", "CD209", "IDO1", "iNOS",
+    "PD-L1", "VISTA", "HLA-DR", "HLA-A",
+    "CD31", "CD34", "Collagen IV", "Podoplanin",
+    "SMA", "Vimentin", "Caveolin",
+    "Pan-Cytokeratin", "EpCAM",
+    "Keratin 14", "Keratin 5", "E-cadherin", "b-Catenin1",
+    "TP63", "SOX2", "GP100", "ER",
+    "PCNA", "Ki67", "Histone H3 (p Ser28)",
+    "CD44", "CD107a", "IFNG", "Beta-actin",
+]
+```
+
+## Results {.panel-tabset}
+
+### Reference (no filter)
+
+```{python}
+adata = sc.read_h5ad("data/adata_processed_v2.h5ad")
+print(adata)
+print(f"Unique clusters: {sorted(adata.obs['leiden'].unique())}")
+print(f"Unique cores: {list(adata.obs['tma_label'].unique())}")
+```
+
+#### UMAP colored by Leiden cluster
+
+```{python}
+sc.pl.umap(adata, color="leiden", palette=plt.rcParams["axes.prop_cycle"].by_key()["color"], legend_loc="on data", legend_fontsize=8)
+```
+
+#### UMAP colored by TMA core
+
+```{python}
+sc.pl.umap(adata, color="tma_label", legend_loc="right margin", legend_fontsize=6)
+```
+
+#### UMAP faceted by TMA core
+
+```{python}
+for core_label in adata.obs["tma_label"].cat.categories:
+    subset = adata[adata.obs["tma_label"] == core_label]
+    sc.pl.umap(subset, color="leiden", palette=plt.rcParams["axes.prop_cycle"].by_key()["color"], title=core_label, show=False)
+```
+
+#### Cell type composition per TMA core
+
+```{python}
+ct = pd.crosstab(adata.obs["tma_label"], adata.obs["leiden"], normalize="index") * 100
+ct.index.name = None
+colors = plt.rcParams["axes.prop_cycle"].by_key()["color"][:ct.shape[1]]
+fig, ax = plt.subplots(figsize=(14, 6))
+ct.plot.bar(stacked=True, ax=ax, color=colors, width=0.85, legend=False)
+ax.set_ylabel("% of cells per core")
+ax.set_title("Leiden cluster composition per TMA core")
+ax.legend(title="Cluster", bbox_to_anchor=(1.02, 1), loc="upper left", fontsize=8, title_fontsize=9)
+for tick in ax.get_xticklabels():
+    tick.set_rotation(45)
+    tick.set_ha("right")
+plt.tight_layout()
+plt.show()
+```
+
+#### Marker expression by cluster
+
+```{python}
+markers = [m for m in marker_list_heatmap if m in adata.var_names]
+sc.pl.matrixplot(adata, groupby="leiden", var_names=markers, cmap="RdYlBu_r", swap_axes=False, use_raw=False, standard_scale="var", colorbar_title="", show=True)
+```
+
+#### Spatial projection in TMA grid layout
+
+```{python}
+plot_spatial_grid(adata, rows=10, cols=4, dpi=120, size=0.8)
+```
+
+### Tissue mask filter
+
+```{python}
+adata = sc.read_h5ad("data/adata_tissue_v2.h5ad")
+print(adata)
+print(f"Unique clusters: {sorted(adata.obs['leiden'].unique())}")
+print(f"Unique cores: {list(adata.obs['tma_label'].unique())}")
+```
+
+#### UMAP colored by Leiden cluster
+
+```{python}
+sc.pl.umap(adata, color="leiden", palette=plt.rcParams["axes.prop_cycle"].by_key()["color"], legend_loc="on data", legend_fontsize=8)
+```
+
+#### UMAP colored by TMA core
+
+```{python}
+sc.pl.umap(adata, color="tma_label", legend_loc="right margin", legend_fontsize=6)
+```
+
+#### UMAP faceted by TMA core
+
+```{python}
+for core_label in adata.obs["tma_label"].cat.categories:
+    subset = adata[adata.obs["tma_label"] == core_label]
+    sc.pl.umap(subset, color="leiden", palette=plt.rcParams["axes.prop_cycle"].by_key()["color"], title=core_label, show=False)
+```
+
+#### Cell type composition per TMA core
+
+```{python}
+ct = pd.crosstab(adata.obs["tma_label"], adata.obs["leiden"], normalize="index") * 100
+ct.index.name = None
+colors = plt.rcParams["axes.prop_cycle"].by_key()["color"][:ct.shape[1]]
+fig, ax = plt.subplots(figsize=(14, 6))
+ct.plot.bar(stacked=True, ax=ax, color=colors, width=0.85, legend=False)
+ax.set_ylabel("% of cells per core")
+ax.set_title("Leiden cluster composition per TMA core")
+ax.legend(title="Cluster", bbox_to_anchor=(1.02, 1), loc="upper left", fontsize=8, title_fontsize=9)
+for tick in ax.get_xticklabels():
+    tick.set_rotation(45)
+    tick.set_ha("right")
+plt.tight_layout()
+plt.show()
+```
+
+#### Marker expression by cluster
+
+```{python}
+markers = [m for m in marker_list_heatmap if m in adata.var_names]
+sc.pl.matrixplot(adata, groupby="leiden", var_names=markers, cmap="RdYlBu_r", swap_axes=False, use_raw=False, standard_scale="var", colorbar_title="", show=True)
+```
+
+#### Spatial projection in TMA grid layout
+
+```{python}
+plot_spatial_grid(adata, rows=10, cols=4, dpi=120, size=0.8)
+```
+
+### Core circle 80% filter
+
+```{python}
+adata = sc.read_h5ad("data/adata_core_v2.h5ad")
+print(adata)
+print(f"Unique clusters: {sorted(adata.obs['leiden'].unique())}")
+print(f"Unique cores: {list(adata.obs['tma_label'].unique())}")
+```
+
+#### UMAP colored by Leiden cluster
+
+```{python}
+sc.pl.umap(adata, color="leiden", palette=plt.rcParams["axes.prop_cycle"].by_key()["color"], legend_loc="on data", legend_fontsize=8)
+```
+
+#### UMAP colored by TMA core
+
+```{python}
+sc.pl.umap(adata, color="tma_label", legend_loc="right margin", legend_fontsize=6)
+```
+
+#### UMAP faceted by TMA core
+
+```{python}
+for core_label in adata.obs["tma_label"].cat.categories:
+    subset = adata[adata.obs["tma_label"] == core_label]
+    sc.pl.umap(subset, color="leiden", palette=plt.rcParams["axes.prop_cycle"].by_key()["color"], title=core_label, show=False)
+```
+
+#### Cell type composition per TMA core
+
+```{python}
+ct = pd.crosstab(adata.obs["tma_label"], adata.obs["leiden"], normalize="index") * 100
+ct.index.name = None
+colors = plt.rcParams["axes.prop_cycle"].by_key()["color"][:ct.shape[1]]
+fig, ax = plt.subplots(figsize=(14, 6))
+ct.plot.bar(stacked=True, ax=ax, color=colors, width=0.85, legend=False)
+ax.set_ylabel("% of cells per core")
+ax.set_title("Leiden cluster composition per TMA core")
+ax.legend(title="Cluster", bbox_to_anchor=(1.02, 1), loc="upper left", fontsize=8, title_fontsize=9)
+for tick in ax.get_xticklabels():
+    tick.set_rotation(45)
+    tick.set_ha("right")
+plt.tight_layout()
+plt.show()
+```
+
+#### Marker expression by cluster
+
+```{python}
+markers = [m for m in marker_list_heatmap if m in adata.var_names]
+sc.pl.matrixplot(adata, groupby="leiden", var_names=markers, cmap="RdYlBu_r", swap_axes=False, use_raw=False, standard_scale="var", colorbar_title="", show=True)
+```
+
+#### Spatial projection in TMA grid layout
+
+```{python}
+plot_spatial_grid(adata, rows=10, cols=4, dpi=120, size=0.8)
+```

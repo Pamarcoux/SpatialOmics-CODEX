@@ -11,6 +11,8 @@ book:
     - index.qmd
     - CODEX_Nathalie_test_1_analysis.qmd
     - CODEX_Nathalie_test_2_analysis.qmd
+    - CODEX_TMA_analysis.qmd
+    - CODEX_TMA_visualization.qmd
 
 format:
   html:

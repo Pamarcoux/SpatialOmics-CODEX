@@ -1,0 +1,150 @@
+---
+title: "TMA CODEX - Analysis pipeline"
+author: "Paul Marcoux"
+date: today
+date-format: "DD MM YYYY"
+format: 
+  html:
+    page-layout: full
+    toc: true
+    toc-depth: 3
+    toc-location: left
+    code-fold: true
+    code-summary: "Show code"
+    code-tools: true
+    theme: cosmo
+    embed-resources: true
+    number-sections: true
+execute:
+  warning: false
+  message: false
+  echo: false
+  column: page
+jupyter: sopa
+---
+
+# TMA CODEX Analysis
+
+## Configuration and package loading
+
+```{python}
+```
+
+```{python}
+import scanpy as sc
+import spatialdata as sd
+import pandas as pd
+import numpy as np
+import anndata as ad
+import matplotlib.pyplot as plt
+import warnings
+import os
+import seaborn as sns
+
+warnings.filterwarnings("ignore")
+sc.settings.verbosity = 0
+```
+
+```{python}
+def clr_normalization(x):
+    x = np.asarray(x)
+    positive_mask = x > 0
+    if np.any(positive_mask):
+        log1p_sum = np.sum(np.log1p(x[positive_mask]))
+        n = len(x)
+        geometric_mean = np.exp(log1p_sum / n)
+    else:
+        geometric_mean = 1
+    return np.log1p(x / geometric_mean)
+```
+
+## Data loading
+
+```{python}
+zarr_path = "/home/paul.marcoux/Postdoc/Python/CODEX_TMA/data/FFPE-IO60-Eq09-25TMA-22052026.zarr"
+sdata = sd.read_zarr(zarr_path)
+table_key = "FFPE_IO60_Eq09_25TMA_22052026_adata"
+adata = sdata.tables[table_key].copy()
+```
+
+```{python}
+adata.obsm["spatial"] = adata.obsm["spatial_px"]
+print(adata)
+print(f"Markers: {list(adata.var_names)}")
+```
+
+## QC filtering
+
+```{python}
+# Filter by cell area -- remove debris and clumps using percentiles
+area_low = adata.obs["area"].quantile(0.01)
+area_high = adata.obs["area"].quantile(0.99)
+print(f"Area filter: [{area_low:.1f}, {area_high:.1f}]")
+adata = adata[(adata.obs["area"] >= area_low) & (adata.obs["area"] <= area_high)].copy()
+
+# Filter cells with fewer than 3 markers detected
+n_markers_detected = (adata.X > 0).sum(axis=1)
+adata = adata[n_markers_detected >= 3].copy()
+print(f"After QC: {adata.n_obs} cells, {adata.n_vars} markers")
+```
+
+```{python}
+# Store raw counts
+adata.layers["counts"] = adata.X.copy()
+```
+
+## Background removal
+
+```{python}
+# Per-marker background subtraction: subtract 10th percentile, clip at 0
+bg_thresholds = np.percentile(adata.X, 10, axis=0)
+print("Background thresholds (10th percentile per marker):")
+for i, (marker, threshold) in enumerate(zip(adata.var_names, bg_thresholds)):
+    print(f"  {marker:20s}: {threshold:.3f}")
+
+adata.X = adata.X - bg_thresholds[np.newaxis, :]
+adata.X = adata.X.clip(0)
+```
+
+## CLR normalization per core + scaling
+
+```{python}
+# Apply CLR per cell, grouped by TMA core
+X_clr = np.zeros_like(adata.X)
+for core in adata.obs["tma_label"].cat.categories:
+    mask = adata.obs["tma_label"] == core
+    for i in np.where(mask)[0]:
+        X_clr[i, :] = clr_normalization(adata.X[i])
+adata.X = X_clr
+adata.layers["clr"] = adata.X.copy()
+
+# Global scale
+sc.pp.scale(adata, max_value=10)
+```
+
+## PCA + Harmony + UMAP + Leiden
+
+```{python}
+sc.pp.pca(adata, n_comps=30)
+sc.external.pp.bbknn(
+    adata,
+    batch_key="tma_label",
+    neighbors_within_batch=3,
+    computation="pynndescent",
+)
+sc.tl.umap(adata)
+sc.tl.leiden(adata, flavor="igraph", n_iterations=-1, resolution=0.5, key_added="leiden")
+```
+
+```{python}
+print(f"Leiden clusters: {adata.obs['leiden'].nunique()}")
+print(adata.obs["leiden"].value_counts().sort_index())
+```
+
+## Save
+
+```{python}
+output_path = "/home/paul.marcoux/Postdoc/R/SpatialOmics-CODEX/data/adata_processed.h5ad"
+adata.write_h5ad(output_path)
+print(f"Saved to {output_path}")
+```

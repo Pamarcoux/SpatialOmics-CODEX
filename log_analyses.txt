@@ -1,0 +1,38 @@
+/home/paul.marcoux/Postdoc/Python/CODEX_TMA/.venv/lib/python3.11/site-packages/scanpy/_utils/__init__.py:27: FutureWarning: `__version__` is deprecated, use `importlib.metadata.version('anndata')` instead.
+  from anndata import __version__ as anndata_version
+/home/paul.marcoux/Postdoc/Python/CODEX_TMA/.venv/lib/python3.11/site-packages/scanpy/__init__.py:36: FutureWarning: `__version__` is deprecated, use `importlib.metadata.version('anndata')` instead.
+  if Version(anndata.__version__) >= Version("0.11.0rc2"):
+/home/paul.marcoux/Postdoc/Python/CODEX_TMA/.venv/lib/python3.11/site-packages/scanpy/readwrite.py:15: FutureWarning: `__version__` is deprecated, use `importlib.metadata.version('anndata')` instead.
+  if Version(anndata.__version__) >= Version("0.11.0rc2"):
+/home/paul.marcoux/Postdoc/Python/CODEX_TMA/.venv/lib/python3.11/site-packages/xarray_schema/__init__.py:1: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import DistributionNotFound, get_distribution
+Loading zarr...
+version mismatch: detected: RasterFormatV02, requested: FormatV04
+Loaded: 450724 cells in 1s
+Tissue filter: 446874 cells (0s)
+QC (tissue): 438165 cells
+
+=== Analysis 1: Tissue mask ===
+  BG sub: 1s
+  CLR: 0.8s
+  Scale: 0s
+  PCA: 2s
+  BBKNN: 96s
+  UMAP: 270s
+  Leiden: 16 clusters, 907s
+  Total: 1276s
+Saved: adata_tissue.h5ad
+Core circle 80%: 199583 cells (0s)
+Core filter: 199583 cells
+QC (core): 195608 cells
+
+=== Analysis 2: Core circle 80% ===
+  BG sub: 0s
+  CLR: 0.3s
+  Scale: 0s
+  PCA: 1s
+  BBKNN: 40s
+  UMAP: 94s
+  Leiden: 15 clusters, 146s
+  Total: 281s
+Saved: adata_core.h5ad
