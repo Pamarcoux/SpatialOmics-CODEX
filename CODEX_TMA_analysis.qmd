@@ -144,7 +144,7 @@ print(adata.obs["leiden"].value_counts().sort_index())
 ## Save
 
 ```{python}
-output_path = "/home/paul.marcoux/Postdoc/R/SpatialOmics-CODEX/data/adata_processed.h5ad"
+output_path = "/home/paul.marcoux/Postdoc/R/SpatialOmics-CODEX/data/processed/adata_processed.h5ad"
 adata.write_h5ad(output_path)
 print(f"Saved to {output_path}")
 ```

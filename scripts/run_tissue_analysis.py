@@ -75,7 +75,7 @@ a = filter_qc(a)
 print(f'QC (tissue): {a.n_obs} cells', flush=True)
 
 a = process_adata(a, 'Analysis 1: Tissue mask')
-a.write_h5ad(os.path.join(OUT, 'data', 'adata_tissue.h5ad'))
+a.write_h5ad(os.path.join(OUT, 'data', 'processed', 'adata_tissue.h5ad'))
 print('Saved: adata_tissue.h5ad', flush=True)
 
 # === ANALYSIS 2: Core circle 80% ===
@@ -101,5 +101,5 @@ print(f'Core filter: {a2.n_obs} cells', flush=True)
 a2 = filter_qc(a2)
 print(f'QC (core): {a2.n_obs} cells', flush=True)
 a2 = process_adata(a2, 'Analysis 2: Core circle 80%')
-a2.write_h5ad(os.path.join(OUT, 'data', 'adata_core.h5ad'))
+a2.write_h5ad(os.path.join(OUT, 'data', 'processed', 'adata_core.h5ad'))
 print('Saved: adata_core.h5ad', flush=True)
