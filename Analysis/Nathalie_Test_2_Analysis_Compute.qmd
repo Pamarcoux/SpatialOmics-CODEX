@@ -1,0 +1,308 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: \"Test 2 - Nathalie May 26\"\n",
+        "author: \"Paul Marcoux\"\n",
+        "date: today\n",
+        "date-format: \"DD MM YYYY\"\n",
+        "format: \n",
+        "  html:\n",
+        "    page-layout: full\n",
+        "    toc: true\n",
+        "    toc-depth: 3\n",
+        "    toc-location: left\n",
+        "    code-fold: true\n",
+        "    code-summary: \"Show code\"\n",
+        "    code-tools: true\n",
+        "    theme: cosmo\n",
+        "    embed-resources: true\n",
+        "    number-sections: true\n",
+        "execute:\n",
+        "  warning: false\n",
+        "  message: false\n",
+        "  echo: false\n",
+        "  column: page\n",
+        "jupyter: sopa\n",
+        "---\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "# Analysis of the CODEX data from Nathalie Test_2\n",
+        "\n",
+        "## Configuration and package loading\n"
+      ],
+      "id": "dedbdaf9"
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "```{r Env}\n",
+        "library(reticulate)\n",
+        "use_condaenv(\"sopa\", required = TRUE)\n",
+        "```\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "Import Package\n"
+      ],
+      "id": "66dea1a7"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "# import the python packages\n",
+        "import scanpy as sc\n",
+        "import spatialdata as sd\n",
+        "import pandas as pd\n",
+        "import numpy as np\n",
+        "import h5py\n",
+        "import anndata as ad\n",
+        "import spatialdata_io as sio\n",
+        "import spatialdata_plot\n",
+        "import matplotlib.pyplot as plt\n",
+        "import warnings\n",
+        "import os\n",
+        "import squidpy as sq\n",
+        "\n",
+        "warnings.filterwarnings(\"ignore\")"
+      ],
+      "id": "32a7a9a2",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import numpy as np\n",
+        "\n",
+        "def plot_spatial_auto_size(adata, sample_name, dpi=100, scale=0.0005):\n",
+        "    subset = adata[adata.obs[\"sample\"] == sample_name]\n",
+        "    \n",
+        "    # Récupère les coordonnées spatiales\n",
+        "    coords = subset.obsm[\"spatial\"]\n",
+        "    x_range = coords[:, 0].max() - coords[:, 0].min()\n",
+        "    y_range = coords[:, 1].max() - coords[:, 1].min()\n",
+        "    \n",
+        "    # Calcule la taille en inches proportionnelle\n",
+        "    fig_w = x_range * scale\n",
+        "    fig_h = y_range * scale\n",
+        "    \n",
+        "    fig, ax = plt.subplots(figsize=(fig_w, fig_h), dpi=dpi)\n",
+        "    \n",
+        "    sc.pl.embedding(\n",
+        "        subset,\n",
+        "        basis=\"spatial\",\n",
+        "        color=\"leiden\",\n",
+        "        title=sample_name,\n",
+        "        show=False,\n",
+        "        size=1.5,\n",
+        "        ax=ax,\n",
+        "    )\n",
+        "    plt.tight_layout()"
+      ],
+      "id": "37a1548f",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Read Data\n"
+      ],
+      "id": "779b7435"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "adata_all = sc.read_h5ad(\"/home/paul.marcoux/Postdoc/Python/sopa/workflow/data/Nathalie_test/data/Test_2/processed/adata_merged_Test2_leiden_0_5.h5ad\")"
+      ],
+      "id": "6addde3b",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Clustering and Umap visualization\n",
+        "\n",
+        "### Umap of unsupervised leiden clustering with resolution 0.5\n"
+      ],
+      "id": "c83aeeae"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Plot Umap\n",
+        "sc.pl.umap(adata_all, color = 'leiden')"
+      ],
+      "id": "1f957bea",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Expression of markers in each clusters\n"
+      ],
+      "id": "3eeb83af"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| include: false\n",
+        "marker_list_heatmap_new = [\n",
+        "    # T cells\n",
+        "    'CD3e', 'CD4', 'CD8', 'CD45RO', 'TCF-1', 'CD45',\n",
+        "\n",
+        "    # Activation / Exhaustion\n",
+        "    'LAG3', 'TOX', 'CD39',\n",
+        "\n",
+        "    # Treg\n",
+        "    'FOXP3', 'CD38',\n",
+        "\n",
+        "    # Tfh\n",
+        "    'PD-1', 'ICOS',\n",
+        "\n",
+        "    # NK\n",
+        "    'CD56', 'CD57', 'Granzyme B',\n",
+        "\n",
+        "    # B cells\n",
+        "    'CD20', 'CD79a', 'Bcl-2', 'CD21',\n",
+        "    'Ki67',\n",
+        "\n",
+        "    # Myeloid / Macrophages / DC\n",
+        "    'CD11b', 'CD11c', 'CD68', 'CD163',\n",
+        "    'CD14', 'CD66', 'MPO',          # Neutrophils/Monocytes\n",
+        "    'CD206', 'CD209',               # DC / M2 macrophages\n",
+        "    'IDO1', 'iNOS',                 # Macrophage functional markers\n",
+        "\n",
+        "    # Immune checkpoints / Immunomodulation\n",
+        "    'PD-L1', 'VISTA', 'HLA-DR', 'HLA-A',\n",
+        "\n",
+        "    # Stromal / Endothelial\n",
+        "    'CD31', 'CD34', 'Collagen IV', 'Podoplanin',\n",
+        "    'SMA', 'Vimentin', 'Caveolin',  # Fibroblast / stromal\n",
+        "\n",
+        "    # Epithelial / Tumor\n",
+        "    'Pan-Cytokeratin', 'EpCAM',\n",
+        "    'Keratin 14', 'Keratin 5', \n",
+        "    # 'Keratin 8/18',  # Epithelial subtypes\n",
+        "    'E-cadherin', 'b-Catenin1',                 # Epithelial / EMT\n",
+        "    'TP63', 'SOX2',                             # Epithelial TF\n",
+        "    'GP100', 'ER',                              # Tumor specific (melanoma / breast)\n",
+        "\n",
+        "    # Proliferation / Cell cycle\n",
+        "    'PCNA', 'Ki67', 'Histone H3 (p Ser28)',\n",
+        "\n",
+        "    # Other / Unclassified\n",
+        "    'CD44',     # Activation / stemness\n",
+        "    'CD107a',   # Degranulation (NK/CTL)\n",
+        "    'IFNG',     # Cytokine\n",
+        "    'Beta-actin',  # Housekeeping\n",
+        "\n",
+        "    # Nuclear / Structural (typically excluded from biological analysis)\n",
+        "    # 'DAPI',\n",
+        "]"
+      ],
+      "id": "abb6306a",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "sc.pl.matrixplot(\n",
+        "    adata_all,\n",
+        "    groupby=\"leiden\",\n",
+        "    var_names=marker_list_heatmap_new,\n",
+        "    cmap=\"RdYlBu_r\",\n",
+        "    swap_axes=False,\n",
+        "    use_raw=False,       # or True if you want raw counts\n",
+        "    standard_scale=\"var\", # optional: scale across genes\n",
+        "    colorbar_title=\"\",   # Remove colorbar title\n",
+        "    show=True,          # Don't show immediately\n",
+        ")"
+      ],
+      "id": "02a5e6a7",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Leiden Clustering projection on slide ROI\n"
+      ],
+      "id": "4f8b5a5b"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "plot_spatial_auto_size(adata_all,\"OI60-FFPE-Eq09-21T026643-1-050526_1\",scale = 0.0005)"
+      ],
+      "id": "0712ce79",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "plot_spatial_auto_size(adata_all, \"OI60-FFPE-Eq09-21T026643-1-050526_3\", scale = 0.0007)"
+      ],
+      "id": "0bd57e45",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "plot_spatial_auto_size(adata_all, \"OI60-FFPE-Eq09-21T026643-1-050526_2\",scale = 0.0005)"
+      ],
+      "id": "16e149ce",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "plot_spatial_auto_size(adata_all, \"IO60-FFPE-Eq09-TemoinAA-070520269\")"
+      ],
+      "id": "0a55502b",
+      "execution_count": null,
+      "outputs": []
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "sopa",
+      "language": "python",
+      "display_name": "Python (sopa)",
+      "path": "/home/paul.marcoux/.local/share/jupyter/kernels/sopa"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}

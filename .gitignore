@@ -3,3 +3,5 @@ _book/
 .Rproj.user
 data/*
 
+
+**/*.quarto_ipynb
