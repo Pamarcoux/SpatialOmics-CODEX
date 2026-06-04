@@ -242,7 +242,7 @@ FL/Tonsil query: 2.35M cells → label transfer via kNN in PCA space (TMA labels
 </section>
 <section id="load-data" class="level2" data-number="6.2">
 <h2 data-number="6.2" class="anchored" data-anchor-id="load-data"><span class="header-section-number">6.2</span> Load data</h2>
-<div id="a39be7b5" class="cell" data-execution_count="7">
+<div id="a7fdbe83" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-stdout">
 <pre><code>AnnData object with n_obs × n_vars = 2740910 × 61
     obs: 'cell_ID', 'area', 'centroid_x', 'centroid_y', 'eccentricity', 'solidity', 'axis_major_length', 'axis_minor_length', 'inertia_tensor-0-0', 'inertia_tensor-0-1', 'inertia_tensor-1-0', 'inertia_tensor-1-1', 'inertia_tensor_eigvals-0', 'inertia_tensor_eigvals-1', 'orientation', 'tma_label', 'lyr', 'leiden', 'dataset', 'batch', 'region', 'slide', 'cell_id', 'sample', 'n_counts'
@@ -259,7 +259,7 @@ TMA: 393,207  |  Tonsil: 2,347,703  |  Total: 2,740,910</code></pre>
 <h3 data-number="6.3.1" class="anchored" data-anchor-id="overview"><span class="header-section-number">6.3.1</span> Overview</h3>
 <section id="umap-colored-by-leiden-cluster" class="level4" data-number="6.3.1.1">
 <h4 data-number="6.3.1.1" class="anchored" data-anchor-id="umap-colored-by-leiden-cluster"><span class="header-section-number">6.3.1.1</span> UMAP colored by Leiden cluster</h4>
-<div id="159853dd" class="cell" data-execution_count="8">
+<div id="460ef283" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -271,7 +271,7 @@ TMA: 393,207  |  Tonsil: 2,347,703  |  Total: 2,740,910</code></pre>
 </section>
 <section id="umap-colored-by-tma-core" class="level4" data-number="6.3.1.2">
 <h4 data-number="6.3.1.2" class="anchored" data-anchor-id="umap-colored-by-tma-core"><span class="header-section-number">6.3.1.2</span> UMAP colored by TMA core</h4>
-<div id="c5c8542e" class="cell" data-execution_count="9">
+<div id="7eb881d9" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -283,7 +283,7 @@ TMA: 393,207  |  Tonsil: 2,347,703  |  Total: 2,740,910</code></pre>
 </section>
 <section id="cluster-composition-tma-vs-fltonsil" class="level4" data-number="6.3.1.3">
 <h4 data-number="6.3.1.3" class="anchored" data-anchor-id="cluster-composition-tma-vs-fltonsil"><span class="header-section-number">6.3.1.3</span> Cluster composition: TMA vs FL/Tonsil</h4>
-<div id="ca6f12d1" class="cell" data-execution_count="10">
+<div id="edf0e199" class="cell" data-execution_count="10">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -295,11 +295,11 @@ TMA: 393,207  |  Tonsil: 2,347,703  |  Total: 2,740,910</code></pre>
 </section>
 <section id="marker-expression-by-cluster-all-cells" class="level4" data-number="6.3.1.4">
 <h4 data-number="6.3.1.4" class="anchored" data-anchor-id="marker-expression-by-cluster-all-cells"><span class="header-section-number">6.3.1.4</span> Marker expression by cluster (all cells)</h4>
-<div id="c33cc09e" class="cell" data-execution_count="11">
+<div id="9d768f8c" class="cell" data-execution_count="11">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="CODEX_TMA_ingest_visualization_files/figure-html/cell-12-output-1.png" width="1856" height="555" class="figure-img"></p>
+<p><img src="CODEX_TMA_ingest_visualization_files/figure-html/cell-12-output-1.png" width="1969" height="555" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -308,7 +308,7 @@ TMA: 393,207  |  Tonsil: 2,347,703  |  Total: 2,740,910</code></pre>
 </section>
 <section id="tma-cores" class="level3" data-number="6.3.2">
 <h3 data-number="6.3.2" class="anchored" data-anchor-id="tma-cores"><span class="header-section-number">6.3.2</span> TMA cores</h3>
-<div id="2641cb4c" class="cell" data-execution_count="12">
+<div id="95e60e74" class="cell" data-execution_count="12">
 <div class="cell-output cell-output-stdout">
 <pre><code>AnnData object with n_obs × n_vars = 393207 × 61
     obs: 'cell_ID', 'area', 'centroid_x', 'centroid_y', 'eccentricity', 'solidity', 'axis_major_length', 'axis_minor_length', 'inertia_tensor-0-0', 'inertia_tensor-0-1', 'inertia_tensor-1-0', 'inertia_tensor-1-1', 'inertia_tensor_eigvals-0', 'inertia_tensor_eigvals-1', 'orientation', 'tma_label', 'lyr', 'leiden', 'dataset', 'batch', 'region', 'slide', 'cell_id', 'sample', 'n_counts', 'leiden_label'
@@ -321,7 +321,7 @@ Unique cores: ['A-3', 'A-4', 'A-2', 'B-4', 'B-1', 'B-3', 'B-2', 'C-4', 'C-2', 'C
 </div>
 <section id="umap-grid-by-tma-core" class="level4" data-number="6.3.2.1">
 <h4 data-number="6.3.2.1" class="anchored" data-anchor-id="umap-grid-by-tma-core"><span class="header-section-number">6.3.2.1</span> UMAP grid by TMA core</h4>
-<div id="7388b896" class="cell" data-execution_count="13">
+<div id="9b66e612" class="cell" data-execution_count="13">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -333,7 +333,7 @@ Unique cores: ['A-3', 'A-4', 'A-2', 'B-4', 'B-1', 'B-3', 'B-2', 'C-4', 'C-2', 'C
 </section>
 <section id="cell-type-composition-per-tma-core" class="level4" data-number="6.3.2.2">
 <h4 data-number="6.3.2.2" class="anchored" data-anchor-id="cell-type-composition-per-tma-core"><span class="header-section-number">6.3.2.2</span> Cell type composition per TMA core</h4>
-<div id="39264060" class="cell" data-execution_count="14">
+<div id="88708477" class="cell" data-execution_count="14">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -345,11 +345,11 @@ Unique cores: ['A-3', 'A-4', 'A-2', 'B-4', 'B-1', 'B-3', 'B-2', 'C-4', 'C-2', 'C
 </section>
 <section id="marker-expression-by-cluster-tma-only" class="level4" data-number="6.3.2.3">
 <h4 data-number="6.3.2.3" class="anchored" data-anchor-id="marker-expression-by-cluster-tma-only"><span class="header-section-number">6.3.2.3</span> Marker expression by cluster (TMA only)</h4>
-<div id="3fe4755b" class="cell" data-execution_count="15">
+<div id="ff090ae3" class="cell" data-execution_count="15">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="CODEX_TMA_ingest_visualization_files/figure-html/cell-16-output-1.png" width="1856" height="555" class="figure-img"></p>
+<p><img src="CODEX_TMA_ingest_visualization_files/figure-html/cell-16-output-1.png" width="1969" height="555" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -422,7 +422,7 @@ Unique cores: ['A-3', 'A-4', 'A-2', 'B-4', 'B-1', 'B-3', 'B-2', 'C-4', 'C-2', 'C
 </section>
 <section id="spatial-projection-in-tma-grid-layout" class="level4" data-number="6.3.2.5">
 <h4 data-number="6.3.2.5" class="anchored" data-anchor-id="spatial-projection-in-tma-grid-layout"><span class="header-section-number">6.3.2.5</span> Spatial projection in TMA grid layout</h4>
-<div id="06b718d4" class="cell" data-execution_count="16">
+<div id="2a1733f0" class="cell" data-execution_count="16">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -438,7 +438,7 @@ Unique cores: ['A-3', 'A-4', 'A-2', 'B-4', 'B-1', 'B-3', 'B-2', 'C-4', 'C-2', 'C
 <section id="spatial-projection-per-slide" class="level4" data-number="6.3.3.1">
 <h4 data-number="6.3.3.1" class="anchored" data-anchor-id="spatial-projection-per-slide"><span class="header-section-number">6.3.3.1</span> Spatial projection per slide</h4>
 <p>Cells colored by the TMA cluster they were assigned to via ingest.</p>
-<div id="450c6084" class="cell" data-execution_count="17">
+<div id="b095ca1a" class="cell" data-execution_count="17">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -447,7 +447,7 @@ Unique cores: ['A-3', 'A-4', 'A-2', 'B-4', 'B-1', 'B-3', 'B-2', 'C-4', 'C-2', 'C
 </div>
 </div>
 </div>
-<div id="2c94619b" class="cell" data-execution_count="18">
+<div id="11c16dfb" class="cell" data-execution_count="18">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -456,7 +456,7 @@ Unique cores: ['A-3', 'A-4', 'A-2', 'B-4', 'B-1', 'B-3', 'B-2', 'C-4', 'C-2', 'C
 </div>
 </div>
 </div>
-<div id="2e98baa5" class="cell" data-execution_count="19">
+<div id="8d2907a9" class="cell" data-execution_count="19">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -465,7 +465,7 @@ Unique cores: ['A-3', 'A-4', 'A-2', 'B-4', 'B-1', 'B-3', 'B-2', 'C-4', 'C-2', 'C
 </div>
 </div>
 </div>
-<div id="f3284947" class="cell" data-execution_count="20">
+<div id="92a1c91b" class="cell" data-execution_count="20">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -477,11 +477,11 @@ Unique cores: ['A-3', 'A-4', 'A-2', 'B-4', 'B-1', 'B-3', 'B-2', 'C-4', 'C-2', 'C
 </section>
 <section id="cluster-composition-per-slide" class="level4" data-number="6.3.3.2">
 <h4 data-number="6.3.3.2" class="anchored" data-anchor-id="cluster-composition-per-slide"><span class="header-section-number">6.3.3.2</span> Cluster composition per slide</h4>
-<div id="e800c4c4" class="cell" data-execution_count="21">
+<div id="8b671fee" class="cell" data-execution_count="21">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="CODEX_TMA_ingest_visualization_files/figure-html/cell-22-output-1.png" width="951" height="470" class="figure-img"></p>
+<p><img src="CODEX_TMA_ingest_visualization_files/figure-html/cell-22-output-1.png" width="949" height="470" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -489,11 +489,11 @@ Unique cores: ['A-3', 'A-4', 'A-2', 'B-4', 'B-1', 'B-3', 'B-2', 'C-4', 'C-2', 'C
 </section>
 <section id="marker-expression-by-cluster-fltonsil-only" class="level4" data-number="6.3.3.3">
 <h4 data-number="6.3.3.3" class="anchored" data-anchor-id="marker-expression-by-cluster-fltonsil-only"><span class="header-section-number">6.3.3.3</span> Marker expression by cluster (FL/tonsil only)</h4>
-<div id="5f41f4af" class="cell" data-execution_count="22">
+<div id="288e9863" class="cell" data-execution_count="22">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="CODEX_TMA_ingest_visualization_files/figure-html/cell-23-output-1.png" width="1856" height="555" class="figure-img"></p>
+<p><img src="CODEX_TMA_ingest_visualization_files/figure-html/cell-23-output-1.png" width="1969" height="555" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1217,7 +1217,7 @@ Unique cores: ['A-3', 'A-4', 'A-2', 'B-4', 'B-1', 'B-3', 'B-2', 'C-4', 'C-2', 'C
 <span id="cb3-267"><a href="#cb3-267" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-270"><a href="#cb3-270" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
 <span id="cb3-271"><a href="#cb3-271" aria-hidden="true" tabindex="-1"></a>markers <span class="op">=</span> [m <span class="cf">for</span> m <span class="kw">in</span> marker_list_heatmap <span class="cf">if</span> m <span class="kw">in</span> adata.var_names]</span>
-<span id="cb3-272"><a href="#cb3-272" aria-hidden="true" tabindex="-1"></a>sc.pl.dotplot(adata, groupby<span class="op">=</span><span class="st">"leiden"</span>, var_names<span class="op">=</span>markers, cmap<span class="op">=</span><span class="st">"RdYlBu_r"</span>, standard_scale<span class="op">=</span><span class="st">"group"</span>)</span>
+<span id="cb3-272"><a href="#cb3-272" aria-hidden="true" tabindex="-1"></a>sc.pl.dotplot(adata, groupby<span class="op">=</span><span class="st">"leiden_label"</span>, var_names<span class="op">=</span>markers, cmap<span class="op">=</span><span class="st">"RdYlBu_r"</span>, standard_scale<span class="op">=</span><span class="st">"group"</span>)</span>
 <span id="cb3-273"><a href="#cb3-273" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb3-274"><a href="#cb3-274" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-275"><a href="#cb3-275" aria-hidden="true" tabindex="-1"></a><span class="fu">### TMA cores</span></span>
@@ -1255,7 +1255,7 @@ Unique cores: ['A-3', 'A-4', 'A-2', 'B-4', 'B-1', 'B-3', 'B-2', 'C-4', 'C-2', 'C
 <span id="cb3-313"><a href="#cb3-313" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-316"><a href="#cb3-316" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
 <span id="cb3-317"><a href="#cb3-317" aria-hidden="true" tabindex="-1"></a>markers <span class="op">=</span> [m <span class="cf">for</span> m <span class="kw">in</span> marker_list_heatmap <span class="cf">if</span> m <span class="kw">in</span> adata_tma.var_names]</span>
-<span id="cb3-318"><a href="#cb3-318" aria-hidden="true" tabindex="-1"></a>sc.pl.dotplot(adata_tma, groupby<span class="op">=</span><span class="st">"leiden"</span>, var_names<span class="op">=</span>markers, cmap<span class="op">=</span><span class="st">"RdYlBu_r"</span>, standard_scale<span class="op">=</span><span class="st">"group"</span>)</span>
+<span id="cb3-318"><a href="#cb3-318" aria-hidden="true" tabindex="-1"></a>sc.pl.dotplot(adata_tma, groupby<span class="op">=</span><span class="st">"leiden_label"</span>, var_names<span class="op">=</span>markers, cmap<span class="op">=</span><span class="st">"RdYlBu_r"</span>, standard_scale<span class="op">=</span><span class="st">"group"</span>)</span>
 <span id="cb3-319"><a href="#cb3-319" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb3-320"><a href="#cb3-320" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-321"><a href="#cb3-321" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Cluster identification</span></span>
@@ -1305,7 +1305,7 @@ Unique cores: ['A-3', 'A-4', 'A-2', 'B-4', 'B-1', 'B-3', 'B-2', 'C-4', 'C-2', 'C
 <span id="cb3-375"><a href="#cb3-375" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-378"><a href="#cb3-378" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
 <span id="cb3-379"><a href="#cb3-379" aria-hidden="true" tabindex="-1"></a>adata_tonsil <span class="op">=</span> adata[adata.obs[<span class="st">"dataset"</span>] <span class="op">==</span> <span class="st">"tonsil"</span>]</span>
-<span id="cb3-380"><a href="#cb3-380" aria-hidden="true" tabindex="-1"></a>ct <span class="op">=</span> pd.crosstab(adata_tonsil.obs[<span class="st">"slide"</span>], adata_tonsil.obs[<span class="st">"leiden"</span>], normalize<span class="op">=</span><span class="st">"index"</span>) <span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb3-380"><a href="#cb3-380" aria-hidden="true" tabindex="-1"></a>ct <span class="op">=</span> pd.crosstab(adata_tonsil.obs[<span class="st">"slide"</span>], adata_tonsil.obs[<span class="st">"leiden_label"</span>], normalize<span class="op">=</span><span class="st">"index"</span>) <span class="op">*</span> <span class="dv">100</span></span>
 <span id="cb3-381"><a href="#cb3-381" aria-hidden="true" tabindex="-1"></a>ct.index <span class="op">=</span> [<span class="st">"TemoinAA"</span>, <span class="st">"OI60_1"</span>, <span class="st">"OI60_2"</span>, <span class="st">"OI60_3"</span>]</span>
 <span id="cb3-382"><a href="#cb3-382" aria-hidden="true" tabindex="-1"></a>ct.index.name <span class="op">=</span> <span class="va">None</span></span>
 <span id="cb3-383"><a href="#cb3-383" aria-hidden="true" tabindex="-1"></a>colors <span class="op">=</span> cluster_palette[:ct.shape[<span class="dv">1</span>]]</span>
@@ -1324,7 +1324,7 @@ Unique cores: ['A-3', 'A-4', 'A-2', 'B-4', 'B-1', 'B-3', 'B-2', 'C-4', 'C-2', 'C
 <span id="cb3-396"><a href="#cb3-396" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-399"><a href="#cb3-399" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
 <span id="cb3-400"><a href="#cb3-400" aria-hidden="true" tabindex="-1"></a>markers <span class="op">=</span> [m <span class="cf">for</span> m <span class="kw">in</span> marker_list_heatmap <span class="cf">if</span> m <span class="kw">in</span> adata_tonsil.var_names]</span>
-<span id="cb3-401"><a href="#cb3-401" aria-hidden="true" tabindex="-1"></a>sc.pl.dotplot(adata_tonsil, groupby<span class="op">=</span><span class="st">"leiden"</span>, var_names<span class="op">=</span>markers, cmap<span class="op">=</span><span class="st">"RdYlBu_r"</span>, standard_scale<span class="op">=</span><span class="st">"group"</span>)</span>
+<span id="cb3-401"><a href="#cb3-401" aria-hidden="true" tabindex="-1"></a>sc.pl.dotplot(adata_tonsil, groupby<span class="op">=</span><span class="st">"leiden_label"</span>, var_names<span class="op">=</span>markers, cmap<span class="op">=</span><span class="st">"RdYlBu_r"</span>, standard_scale<span class="op">=</span><span class="st">"group"</span>)</span>
 <span id="cb3-402"><a href="#cb3-402" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
