@@ -242,7 +242,7 @@ FL/Tonsil query: 2.35M cells → label transfer via kNN in PCA space (TMA labels
 </section>
 <section id="load-data" class="level2" data-number="6.2">
 <h2 data-number="6.2" class="anchored" data-anchor-id="load-data"><span class="header-section-number">6.2</span> Load data</h2>
-<div id="ca6f28ad" class="cell" data-execution_count="7">
+<div id="deeaf91b" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-stdout">
 <pre><code>AnnData object with n_obs × n_vars = 2740910 × 61
     obs: 'cell_ID', 'area', 'centroid_x', 'centroid_y', 'eccentricity', 'solidity', 'axis_major_length', 'axis_minor_length', 'inertia_tensor-0-0', 'inertia_tensor-0-1', 'inertia_tensor-1-0', 'inertia_tensor-1-1', 'inertia_tensor_eigvals-0', 'inertia_tensor_eigvals-1', 'orientation', 'tma_label', 'lyr', 'leiden', 'dataset', 'batch', 'region', 'slide', 'cell_id', 'sample', 'n_counts'
@@ -259,7 +259,7 @@ TMA: 393,207  |  Tonsil: 2,347,703  |  Total: 2,740,910</code></pre>
 <h3 data-number="6.3.1" class="anchored" data-anchor-id="overview"><span class="header-section-number">6.3.1</span> Overview</h3>
 <section id="umap-colored-by-leiden-cluster" class="level4" data-number="6.3.1.1">
 <h4 data-number="6.3.1.1" class="anchored" data-anchor-id="umap-colored-by-leiden-cluster"><span class="header-section-number">6.3.1.1</span> UMAP colored by Leiden cluster</h4>
-<div id="9bedd5a0" class="cell" data-execution_count="8">
+<div id="aca9e5f6" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -271,7 +271,7 @@ TMA: 393,207  |  Tonsil: 2,347,703  |  Total: 2,740,910</code></pre>
 </section>
 <section id="umap-colored-by-tma-core" class="level4" data-number="6.3.1.2">
 <h4 data-number="6.3.1.2" class="anchored" data-anchor-id="umap-colored-by-tma-core"><span class="header-section-number">6.3.1.2</span> UMAP colored by TMA core</h4>
-<div id="e4b38083" class="cell" data-execution_count="9">
+<div id="ac6eedf2" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -283,7 +283,7 @@ TMA: 393,207  |  Tonsil: 2,347,703  |  Total: 2,740,910</code></pre>
 </section>
 <section id="cluster-composition-tma-vs-fltonsil" class="level4" data-number="6.3.1.3">
 <h4 data-number="6.3.1.3" class="anchored" data-anchor-id="cluster-composition-tma-vs-fltonsil"><span class="header-section-number">6.3.1.3</span> Cluster composition: TMA vs FL/Tonsil</h4>
-<div id="d9e243db" class="cell" data-execution_count="10">
+<div id="7b3d329b" class="cell" data-execution_count="10">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -295,7 +295,7 @@ TMA: 393,207  |  Tonsil: 2,347,703  |  Total: 2,740,910</code></pre>
 </section>
 <section id="marker-expression-by-cluster-all-cells" class="level4" data-number="6.3.1.4">
 <h4 data-number="6.3.1.4" class="anchored" data-anchor-id="marker-expression-by-cluster-all-cells"><span class="header-section-number">6.3.1.4</span> Marker expression by cluster (all cells)</h4>
-<div id="9452154b" class="cell" data-execution_count="11">
+<div id="9604947e" class="cell" data-execution_count="11">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -308,7 +308,7 @@ TMA: 393,207  |  Tonsil: 2,347,703  |  Total: 2,740,910</code></pre>
 </section>
 <section id="tma-cores" class="level3" data-number="6.3.2">
 <h3 data-number="6.3.2" class="anchored" data-anchor-id="tma-cores"><span class="header-section-number">6.3.2</span> TMA cores</h3>
-<div id="fe0dea5a" class="cell" data-execution_count="12">
+<div id="aa468a9a" class="cell" data-execution_count="12">
 <div class="cell-output cell-output-stdout">
 <pre><code>AnnData object with n_obs × n_vars = 393207 × 61
     obs: 'cell_ID', 'area', 'centroid_x', 'centroid_y', 'eccentricity', 'solidity', 'axis_major_length', 'axis_minor_length', 'inertia_tensor-0-0', 'inertia_tensor-0-1', 'inertia_tensor-1-0', 'inertia_tensor-1-1', 'inertia_tensor_eigvals-0', 'inertia_tensor_eigvals-1', 'orientation', 'tma_label', 'lyr', 'leiden', 'dataset', 'batch', 'region', 'slide', 'cell_id', 'sample', 'n_counts', 'leiden_label'
@@ -321,7 +321,7 @@ Unique cores: ['A-3', 'A-4', 'A-2', 'B-4', 'B-1', 'B-3', 'B-2', 'C-4', 'C-2', 'C
 </div>
 <section id="umap-grid-by-tma-core" class="level4" data-number="6.3.2.1">
 <h4 data-number="6.3.2.1" class="anchored" data-anchor-id="umap-grid-by-tma-core"><span class="header-section-number">6.3.2.1</span> UMAP grid by TMA core</h4>
-<div id="3a5d2ede" class="cell" data-execution_count="13">
+<div id="c3dc64c7" class="cell" data-execution_count="13">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -333,7 +333,7 @@ Unique cores: ['A-3', 'A-4', 'A-2', 'B-4', 'B-1', 'B-3', 'B-2', 'C-4', 'C-2', 'C
 </section>
 <section id="cell-type-composition-per-tma-core" class="level4" data-number="6.3.2.2">
 <h4 data-number="6.3.2.2" class="anchored" data-anchor-id="cell-type-composition-per-tma-core"><span class="header-section-number">6.3.2.2</span> Cell type composition per TMA core</h4>
-<div id="7a5aff1e" class="cell" data-execution_count="14">
+<div id="b447855c" class="cell" data-execution_count="14">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -345,7 +345,7 @@ Unique cores: ['A-3', 'A-4', 'A-2', 'B-4', 'B-1', 'B-3', 'B-2', 'C-4', 'C-2', 'C
 </section>
 <section id="marker-expression-by-cluster-tma-only" class="level4" data-number="6.3.2.3">
 <h4 data-number="6.3.2.3" class="anchored" data-anchor-id="marker-expression-by-cluster-tma-only"><span class="header-section-number">6.3.2.3</span> Marker expression by cluster (TMA only)</h4>
-<div id="7f06c35d" class="cell" data-execution_count="15">
+<div id="1b675f63" class="cell" data-execution_count="15">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -383,7 +383,7 @@ Unique cores: ['A-3', 'A-4', 'A-2', 'B-4', 'B-1', 'B-3', 'B-2', 'C-4', 'C-2', 'C
 </tr>
 <tr class="odd">
 <td>4</td>
-<td>Epithelial / Tumor cells</td>
+<td>Epithelial</td>
 </tr>
 <tr class="even">
 <td>5</td>
@@ -422,7 +422,7 @@ Unique cores: ['A-3', 'A-4', 'A-2', 'B-4', 'B-1', 'B-3', 'B-2', 'C-4', 'C-2', 'C
 </section>
 <section id="spatial-projection-in-tma-grid-layout" class="level4" data-number="6.3.2.5">
 <h4 data-number="6.3.2.5" class="anchored" data-anchor-id="spatial-projection-in-tma-grid-layout"><span class="header-section-number">6.3.2.5</span> Spatial projection in TMA grid layout</h4>
-<div id="ad76c7ae" class="cell" data-execution_count="16">
+<div id="6169c27e" class="cell" data-execution_count="16">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -438,7 +438,7 @@ Unique cores: ['A-3', 'A-4', 'A-2', 'B-4', 'B-1', 'B-3', 'B-2', 'C-4', 'C-2', 'C
 <section id="spatial-projection-per-slide" class="level4" data-number="6.3.3.1">
 <h4 data-number="6.3.3.1" class="anchored" data-anchor-id="spatial-projection-per-slide"><span class="header-section-number">6.3.3.1</span> Spatial projection per slide</h4>
 <p>Cells colored by the TMA cluster they were assigned to via ingest.</p>
-<div id="4a7d508f" class="cell" data-execution_count="17">
+<div id="487c8f16" class="cell" data-execution_count="17">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -447,7 +447,7 @@ Unique cores: ['A-3', 'A-4', 'A-2', 'B-4', 'B-1', 'B-3', 'B-2', 'C-4', 'C-2', 'C
 </div>
 </div>
 </div>
-<div id="fd8d5f27" class="cell" data-execution_count="18">
+<div id="1940d46d" class="cell" data-execution_count="18">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -456,7 +456,7 @@ Unique cores: ['A-3', 'A-4', 'A-2', 'B-4', 'B-1', 'B-3', 'B-2', 'C-4', 'C-2', 'C
 </div>
 </div>
 </div>
-<div id="09065f45" class="cell" data-execution_count="19">
+<div id="17d2c357" class="cell" data-execution_count="19">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -465,7 +465,7 @@ Unique cores: ['A-3', 'A-4', 'A-2', 'B-4', 'B-1', 'B-3', 'B-2', 'C-4', 'C-2', 'C
 </div>
 </div>
 </div>
-<div id="aac29f19" class="cell" data-execution_count="20">
+<div id="153f1e74" class="cell" data-execution_count="20">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -477,7 +477,7 @@ Unique cores: ['A-3', 'A-4', 'A-2', 'B-4', 'B-1', 'B-3', 'B-2', 'C-4', 'C-2', 'C
 </section>
 <section id="cluster-composition-per-slide" class="level4" data-number="6.3.3.2">
 <h4 data-number="6.3.3.2" class="anchored" data-anchor-id="cluster-composition-per-slide"><span class="header-section-number">6.3.3.2</span> Cluster composition per slide</h4>
-<div id="836f5db5" class="cell" data-execution_count="21">
+<div id="f9b87484" class="cell" data-execution_count="21">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -489,7 +489,7 @@ Unique cores: ['A-3', 'A-4', 'A-2', 'B-4', 'B-1', 'B-3', 'B-2', 'C-4', 'C-2', 'C
 </section>
 <section id="marker-expression-by-cluster-fltonsil-only" class="level4" data-number="6.3.3.3">
 <h4 data-number="6.3.3.3" class="anchored" data-anchor-id="marker-expression-by-cluster-fltonsil-only"><span class="header-section-number">6.3.3.3</span> Marker expression by cluster (FL/tonsil only)</h4>
-<div id="1c47712a" class="cell" data-execution_count="22">
+<div id="223665f0" class="cell" data-execution_count="22">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1054,7 +1054,7 @@ Unique cores: ['A-3', 'A-4', 'A-2', 'B-4', 'B-1', 'B-3', 'B-2', 'C-4', 'C-2', 'C
 <span id="cb3-90"><a href="#cb3-90" aria-hidden="true" tabindex="-1"></a>    <span class="st">"1"</span>: <span class="st">"B cells (follicular)"</span>,</span>
 <span id="cb3-91"><a href="#cb3-91" aria-hidden="true" tabindex="-1"></a>    <span class="st">"2"</span>: <span class="st">"Myeloid / NK (CD56)"</span>,</span>
 <span id="cb3-92"><a href="#cb3-92" aria-hidden="true" tabindex="-1"></a>    <span class="st">"3"</span>: <span class="st">"Myeloid cells"</span>,</span>
-<span id="cb3-93"><a href="#cb3-93" aria-hidden="true" tabindex="-1"></a>    <span class="st">"4"</span>: <span class="st">"Epithelial / Tumor"</span>,</span>
+<span id="cb3-93"><a href="#cb3-93" aria-hidden="true" tabindex="-1"></a>    <span class="st">"4"</span>: <span class="st">"Epithelial"</span>,</span>
 <span id="cb3-94"><a href="#cb3-94" aria-hidden="true" tabindex="-1"></a>    <span class="st">"5"</span>: <span class="st">"Stromal / Endothelial"</span>,</span>
 <span id="cb3-95"><a href="#cb3-95" aria-hidden="true" tabindex="-1"></a>    <span class="st">"6"</span>: <span class="st">"Myeloid / Granulocytes"</span>,</span>
 <span id="cb3-96"><a href="#cb3-96" aria-hidden="true" tabindex="-1"></a>    <span class="st">"7"</span>: <span class="st">"B cells"</span>,</span>
@@ -1266,7 +1266,7 @@ Unique cores: ['A-3', 'A-4', 'A-2', 'B-4', 'B-1', 'B-3', 'B-2', 'C-4', 'C-2', 'C
 <span id="cb3-326"><a href="#cb3-326" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 1 <span class="pp">|</span> B cells (follicular) <span class="pp">|</span></span>
 <span id="cb3-327"><a href="#cb3-327" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 2 <span class="pp">|</span> Myeloid / NK (CD56) <span class="pp">|</span></span>
 <span id="cb3-328"><a href="#cb3-328" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 3 <span class="pp">|</span> Myeloid cells <span class="pp">|</span></span>
-<span id="cb3-329"><a href="#cb3-329" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 4 <span class="pp">|</span> Epithelial / Tumor cells <span class="pp">|</span></span>
+<span id="cb3-329"><a href="#cb3-329" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 4 <span class="pp">|</span> Epithelial <span class="pp">|</span></span>
 <span id="cb3-330"><a href="#cb3-330" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 5 <span class="pp">|</span> Stromal / Endothelial <span class="pp">|</span></span>
 <span id="cb3-331"><a href="#cb3-331" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 6 <span class="pp">|</span> Myeloid / Granulocytes <span class="pp">|</span></span>
 <span id="cb3-332"><a href="#cb3-332" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 7 <span class="pp">|</span> B cells <span class="pp">|</span></span>
