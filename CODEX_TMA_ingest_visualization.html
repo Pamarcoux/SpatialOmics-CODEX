@@ -242,7 +242,7 @@ Tonsil query: 2.35M cells → label transfer via kNN in PCA space (TMA labels).<
 </section>
 <section id="load-data" class="level2" data-number="6.2">
 <h2 data-number="6.2" class="anchored" data-anchor-id="load-data"><span class="header-section-number">6.2</span> Load data</h2>
-<div id="12778b15" class="cell" data-execution_count="7">
+<div id="8e324c2a" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-stdout">
 <pre><code>AnnData object with n_obs × n_vars = 2740910 × 61
     obs: 'cell_ID', 'area', 'centroid_x', 'centroid_y', 'eccentricity', 'solidity', 'axis_major_length', 'axis_minor_length', 'inertia_tensor-0-0', 'inertia_tensor-0-1', 'inertia_tensor-1-0', 'inertia_tensor-1-1', 'inertia_tensor_eigvals-0', 'inertia_tensor_eigvals-1', 'orientation', 'tma_label', 'lyr', 'leiden', 'dataset', 'batch', 'region', 'slide', 'cell_id', 'sample', 'n_counts'
@@ -259,11 +259,11 @@ TMA: 393,207  |  Tonsil: 2,347,703  |  Total: 2,740,910</code></pre>
 <h3 data-number="6.3.1" class="anchored" data-anchor-id="overview"><span class="header-section-number">6.3.1</span> Overview</h3>
 <section id="umap-colored-by-leiden-cluster" class="level4" data-number="6.3.1.1">
 <h4 data-number="6.3.1.1" class="anchored" data-anchor-id="umap-colored-by-leiden-cluster"><span class="header-section-number">6.3.1.1</span> UMAP colored by Leiden cluster</h4>
-<div id="528235f6" class="cell" data-execution_count="8">
+<div id="3694c803" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="CODEX_TMA_ingest_visualization_files/figure-html/cell-9-output-1.png" width="558" height="427" class="figure-img"></p>
+<p><img src="CODEX_TMA_ingest_visualization_files/figure-html/cell-9-output-1.png" width="616" height="427" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -271,7 +271,7 @@ TMA: 393,207  |  Tonsil: 2,347,703  |  Total: 2,740,910</code></pre>
 </section>
 <section id="umap-colored-by-tma-core" class="level4" data-number="6.3.1.2">
 <h4 data-number="6.3.1.2" class="anchored" data-anchor-id="umap-colored-by-tma-core"><span class="header-section-number">6.3.1.2</span> UMAP colored by TMA core</h4>
-<div id="8fe77131" class="cell" data-execution_count="9">
+<div id="f38aba5f" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -283,7 +283,7 @@ TMA: 393,207  |  Tonsil: 2,347,703  |  Total: 2,740,910</code></pre>
 </section>
 <section id="cluster-composition-tma-vs-tonsil" class="level4" data-number="6.3.1.3">
 <h4 data-number="6.3.1.3" class="anchored" data-anchor-id="cluster-composition-tma-vs-tonsil"><span class="header-section-number">6.3.1.3</span> Cluster composition: TMA vs Tonsil</h4>
-<div id="adfb9108" class="cell" data-execution_count="10">
+<div id="39d69642" class="cell" data-execution_count="10">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -295,7 +295,7 @@ TMA: 393,207  |  Tonsil: 2,347,703  |  Total: 2,740,910</code></pre>
 </section>
 <section id="marker-expression-by-cluster-all-cells" class="level4" data-number="6.3.1.4">
 <h4 data-number="6.3.1.4" class="anchored" data-anchor-id="marker-expression-by-cluster-all-cells"><span class="header-section-number">6.3.1.4</span> Marker expression by cluster (all cells)</h4>
-<div id="90d7e1b0" class="cell" data-execution_count="11">
+<div id="278b1413" class="cell" data-execution_count="11">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -308,7 +308,7 @@ TMA: 393,207  |  Tonsil: 2,347,703  |  Total: 2,740,910</code></pre>
 </section>
 <section id="tma-cores" class="level3" data-number="6.3.2">
 <h3 data-number="6.3.2" class="anchored" data-anchor-id="tma-cores"><span class="header-section-number">6.3.2</span> TMA cores</h3>
-<div id="95e5780a" class="cell" data-execution_count="12">
+<div id="dfb2eb0e" class="cell" data-execution_count="12">
 <div class="cell-output cell-output-stdout">
 <pre><code>AnnData object with n_obs × n_vars = 393207 × 61
     obs: 'cell_ID', 'area', 'centroid_x', 'centroid_y', 'eccentricity', 'solidity', 'axis_major_length', 'axis_minor_length', 'inertia_tensor-0-0', 'inertia_tensor-0-1', 'inertia_tensor-1-0', 'inertia_tensor-1-1', 'inertia_tensor_eigvals-0', 'inertia_tensor_eigvals-1', 'orientation', 'tma_label', 'lyr', 'leiden', 'dataset', 'batch', 'region', 'slide', 'cell_id', 'sample', 'n_counts'
@@ -321,7 +321,7 @@ Unique cores: ['A-3', 'A-4', 'A-2', 'B-4', 'B-1', 'B-3', 'B-2', 'C-4', 'C-2', 'C
 </div>
 <section id="umap-grid-by-tma-core" class="level4" data-number="6.3.2.1">
 <h4 data-number="6.3.2.1" class="anchored" data-anchor-id="umap-grid-by-tma-core"><span class="header-section-number">6.3.2.1</span> UMAP grid by TMA core</h4>
-<div id="4efa8bfd" class="cell" data-execution_count="13">
+<div id="1ae05632" class="cell" data-execution_count="13">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -333,7 +333,7 @@ Unique cores: ['A-3', 'A-4', 'A-2', 'B-4', 'B-1', 'B-3', 'B-2', 'C-4', 'C-2', 'C
 </section>
 <section id="cell-type-composition-per-tma-core" class="level4" data-number="6.3.2.2">
 <h4 data-number="6.3.2.2" class="anchored" data-anchor-id="cell-type-composition-per-tma-core"><span class="header-section-number">6.3.2.2</span> Cell type composition per TMA core</h4>
-<div id="30c9fcc4" class="cell" data-execution_count="14">
+<div id="a59fafd7" class="cell" data-execution_count="14">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -345,7 +345,7 @@ Unique cores: ['A-3', 'A-4', 'A-2', 'B-4', 'B-1', 'B-3', 'B-2', 'C-4', 'C-2', 'C
 </section>
 <section id="marker-expression-by-cluster-tma-only" class="level4" data-number="6.3.2.3">
 <h4 data-number="6.3.2.3" class="anchored" data-anchor-id="marker-expression-by-cluster-tma-only"><span class="header-section-number">6.3.2.3</span> Marker expression by cluster (TMA only)</h4>
-<div id="8762c052" class="cell" data-execution_count="15">
+<div id="8d09dad0" class="cell" data-execution_count="15">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -357,7 +357,7 @@ Unique cores: ['A-3', 'A-4', 'A-2', 'B-4', 'B-1', 'B-3', 'B-2', 'C-4', 'C-2', 'C
 </section>
 <section id="spatial-projection-in-tma-grid-layout" class="level4" data-number="6.3.2.4">
 <h4 data-number="6.3.2.4" class="anchored" data-anchor-id="spatial-projection-in-tma-grid-layout"><span class="header-section-number">6.3.2.4</span> Spatial projection in TMA grid layout</h4>
-<div id="77ac904f" class="cell" data-execution_count="16">
+<div id="0fe6a5f4" class="cell" data-execution_count="16">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -373,7 +373,7 @@ Unique cores: ['A-3', 'A-4', 'A-2', 'B-4', 'B-1', 'B-3', 'B-2', 'C-4', 'C-2', 'C
 <section id="spatial-projection-per-slide" class="level4" data-number="6.3.3.1">
 <h4 data-number="6.3.3.1" class="anchored" data-anchor-id="spatial-projection-per-slide"><span class="header-section-number">6.3.3.1</span> Spatial projection per slide</h4>
 <p>Cells colored by the TMA cluster they were assigned to via ingest.</p>
-<div id="9a057f41" class="cell" data-execution_count="17">
+<div id="229648bc" class="cell" data-execution_count="17">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -382,7 +382,7 @@ Unique cores: ['A-3', 'A-4', 'A-2', 'B-4', 'B-1', 'B-3', 'B-2', 'C-4', 'C-2', 'C
 </div>
 </div>
 </div>
-<div id="d0b0ff1c" class="cell" data-execution_count="18">
+<div id="8562ac3c" class="cell" data-execution_count="18">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -391,7 +391,7 @@ Unique cores: ['A-3', 'A-4', 'A-2', 'B-4', 'B-1', 'B-3', 'B-2', 'C-4', 'C-2', 'C
 </div>
 </div>
 </div>
-<div id="da4051b5" class="cell" data-execution_count="19">
+<div id="d3316e7a" class="cell" data-execution_count="19">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -400,7 +400,7 @@ Unique cores: ['A-3', 'A-4', 'A-2', 'B-4', 'B-1', 'B-3', 'B-2', 'C-4', 'C-2', 'C
 </div>
 </div>
 </div>
-<div id="0688040b" class="cell" data-execution_count="20">
+<div id="44d4764b" class="cell" data-execution_count="20">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -412,7 +412,7 @@ Unique cores: ['A-3', 'A-4', 'A-2', 'B-4', 'B-1', 'B-3', 'B-2', 'C-4', 'C-2', 'C
 </section>
 <section id="cluster-composition-per-slide" class="level4" data-number="6.3.3.2">
 <h4 data-number="6.3.3.2" class="anchored" data-anchor-id="cluster-composition-per-slide"><span class="header-section-number">6.3.3.2</span> Cluster composition per slide</h4>
-<div id="2930954e" class="cell" data-execution_count="21">
+<div id="b62cc50b" class="cell" data-execution_count="21">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -424,7 +424,7 @@ Unique cores: ['A-3', 'A-4', 'A-2', 'B-4', 'B-1', 'B-3', 'B-2', 'C-4', 'C-2', 'C
 </section>
 <section id="marker-expression-by-cluster-tonsil-only" class="level4" data-number="6.3.3.3">
 <h4 data-number="6.3.3.3" class="anchored" data-anchor-id="marker-expression-by-cluster-tonsil-only"><span class="header-section-number">6.3.3.3</span> Marker expression by cluster (tonsil only)</h4>
-<div id="c51d3116" class="cell" data-execution_count="22">
+<div id="f8332b7f" class="cell" data-execution_count="22">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -968,7 +968,7 @@ Unique cores: ['A-3', 'A-4', 'A-2', 'B-4', 'B-1', 'B-3', 'B-2', 'C-4', 'C-2', 'C
 <span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb3-72"><a href="#cb3-72" aria-hidden="true" tabindex="-1"></a>cluster_palette <span class="op">=</span> [mcolors.rgb2hex(c) <span class="cf">for</span> c <span class="kw">in</span> plt.cm.tab20.colors[:<span class="dv">13</span>]]</span>
+<span id="cb3-72"><a href="#cb3-72" aria-hidden="true" tabindex="-1"></a>cluster_palette <span class="op">=</span> [mcolors.rgb2hex(c) <span class="cf">for</span> c <span class="kw">in</span> plt.cm.tab20.colors[:<span class="dv">13</span>]][::<span class="op">-</span><span class="dv">1</span>]</span>
 <span id="cb3-73"><a href="#cb3-73" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb3-74"><a href="#cb3-74" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-77"><a href="#cb3-77" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
@@ -1088,7 +1088,7 @@ Unique cores: ['A-3', 'A-4', 'A-2', 'B-4', 'B-1', 'B-3', 'B-2', 'C-4', 'C-2', 'C
 <span id="cb3-197"><a href="#cb3-197" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-200"><a href="#cb3-200" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
 <span id="cb3-201"><a href="#cb3-201" aria-hidden="true" tabindex="-1"></a>adata_tma <span class="op">=</span> adata[adata.obs[<span class="st">"dataset"</span>] <span class="op">==</span> <span class="st">"TMA"</span>]</span>
-<span id="cb3-202"><a href="#cb3-202" aria-hidden="true" tabindex="-1"></a>sc.pl.umap(adata_tma, color<span class="op">=</span><span class="st">"leiden"</span>, legend_loc<span class="op">=</span><span class="st">"on data"</span>, legend_fontsize<span class="op">=</span><span class="dv">8</span>)</span>
+<span id="cb3-202"><a href="#cb3-202" aria-hidden="true" tabindex="-1"></a>sc.pl.umap(adata_tma, color<span class="op">=</span><span class="st">"leiden"</span>, legend_loc<span class="op">=</span><span class="st">"right margin"</span>, legend_fontsize<span class="op">=</span><span class="dv">8</span>)</span>
 <span id="cb3-203"><a href="#cb3-203" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb3-204"><a href="#cb3-204" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-205"><a href="#cb3-205" aria-hidden="true" tabindex="-1"></a><span class="fu">#### UMAP colored by TMA core</span></span>
